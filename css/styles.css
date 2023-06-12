@@ -45,3 +45,8 @@ body {
     left: 40%;
 }
 
+.container img.aguAta{    
+    position: absolute;    
+    top:  53%; 
+    left: 57%;
+}

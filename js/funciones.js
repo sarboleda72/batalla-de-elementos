@@ -24,9 +24,11 @@ function btnTruArr(elemento) {
 
 function ataAgu() {
     var imagen = document.getElementById("estAta");
-    imagen.src = "sprites/Atacante/ataca.gif";    
-    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif"},1000 );
-
+    var ataque= document.getElementById("EfeAguAta");
+    imagen.src = "sprites/Atacante/ataca.gif";
+    ataque.src="sprites/ataque/agua.gif"    
+    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif"},900 );
+    setTimeout(function(){ataque.src=""},5000 );
   }
   
   
