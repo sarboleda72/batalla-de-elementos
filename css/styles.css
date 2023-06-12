@@ -14,12 +14,12 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
-.container img.espEne{
+.container img.pnjEne{
     position: absolute;    
     top:  53.5%; 
     left: 57%;
 }
-.container img.espAta{
+.container img.pnjAta{
     position: absolute;    
     top:  55%; 
     left: 37%;

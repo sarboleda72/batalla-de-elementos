@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batlla de elementos</title>
+    <title>Batalla de elementos</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/funciones.js"></script>
 </head>
 <body>
     <div class="container">
         <img src="sprites/escenario/Escenario.gif" class="escPri">        
-        <img src="sprites/Atacante/espera.gif" class="espAta">     
-        <img src="sprites/Enemigo/espera.gif" class="espEne">
-        <img src="sprites/interfaz/botones/agua/arriba.png" onmousedown="btnAguAba(this)" onmouseup="btnAguArr(this)" class="btnAgu">
+        <img src="sprites/Atacante/espera.gif" class="pnjAta" id="estAta">     
+        <img src="sprites/Enemigo/espera.gif" class="pnjEne">
+        <img src="sprites/interfaz/botones/agua/arriba.png" onmousedown="btnAguAba(this)" onmouseup="btnAguArr(this)" onclick="ataAgu()" class="btnAgu">
         <img src="sprites/interfaz/botones/fuego/arriba.png" onmousedown="btnFueAba(this)" onmouseup="btnFueArr(this)" class="btnFue">
         <img src="sprites/interfaz/botones/trueno/arriba.png" onmousedown="btnTruAba(this)" onmouseup="btnTruArr(this)" class="btnTru">   
     </div>

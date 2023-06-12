@@ -19,3 +19,11 @@ function btnTruAba(elemento) {
 function btnTruArr(elemento) {
     elemento.src = "sprites/interfaz/botones/trueno/arriba.png"
   }
+
+//Sección de cambio de imagen de Ataque
+
+function ataAgu() {
+    var imagen = document.getElementById("estAta");
+    imagen.src = "sprites/Atacante/ataca.gif";
+  }
+  
