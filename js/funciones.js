@@ -25,10 +25,12 @@ function btnTruArr(elemento) {
 function ataAgu() {
     var imagen = document.getElementById("estAta");
     var ataque= document.getElementById("EfeAguAta");
+    var defensa= document.getElementById("estDef");
     imagen.src = "sprites/Atacante/ataca.gif";
-    ataque.src="sprites/ataque/agua.gif"    
-    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif"},900 );
-    setTimeout(function(){ataque.src=""},5000 );
+    ataque.src="sprites/ataque/agua.gif";
+    defensa.src="sprites/Enemigo/golpeado.gif"
+    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif";},900 );
+    setTimeout(function(){ataque.src="";defensa.src="sprites/Enemigo/espera.gif";},5000 );
   }
   
   
