@@ -59,3 +59,30 @@ body {
     top:  53%; 
     left: 70%;
 }
+
+.container img.conVidAta{
+    position: absolute;    
+    top:  0%; 
+    left: 0%;
+}
+
+.container img.conVidEne{
+    transform: scaleX(-1);
+    position: absolute;    
+    top:  0%; 
+    left: 55%;
+}
+
+.container img.vidAta{
+    position: absolute;   
+    top:  0%; 
+    left: 0%;
+    /*margin-left: -50px;*/
+}
+
+.container img.vidEne{
+    transform: scaleX(-1);
+    position: absolute;    
+    top:  0%; 
+    left: 55%;
+}
