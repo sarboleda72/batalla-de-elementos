@@ -1,4 +1,7 @@
 body {
+    /*background-image: "sprites/background/background.png";
+    background-size:auto;
+    background-repeat: no-repeat;*/
     background-color: black;
     width: 480px; 
     margin: 0 auto;
@@ -14,6 +17,7 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
+/*Posicion espacial de los pnj*/
 .container img.pnjEne{
     position: absolute;    
     top:  53.5%; 
@@ -44,8 +48,14 @@ body {
     top:  64%; 
     left: 40%;
 }
-
+/*Posiciones de elementos de ataque*/
 .container img.aguAta{    
+    position: absolute;    
+    top:  53%; 
+    left: 57%;
+}
+
+.container img.truAta{    
     position: absolute;    
     top:  53%; 
     left: 57%;
