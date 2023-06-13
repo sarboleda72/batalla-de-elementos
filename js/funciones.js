@@ -60,12 +60,12 @@ function ataFue() {
             @keyframes aparecer-desplazar {
             0% {
                 opacity: 1;
-                left:40%
+                left:17%
                 
             }
             100% {
                 opacity: 1;
-                left: 57%;
+                left: 70%;
             }
             }
         `;
