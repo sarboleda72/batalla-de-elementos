@@ -8,6 +8,7 @@ function btnAguArr(elemento) {
 
 function btnFueAba(elemento) {
     elemento.src = "sprites/interfaz/botones/fuego/abajo.png"
+    
   }
 function btnFueArr(elemento) {
     elemento.src = "sprites/interfaz/botones/fuego/arriba.png"
@@ -26,10 +27,15 @@ function ataAgu() {
     var imagen = document.getElementById("estAta");
     var ataque= document.getElementById("efeAguAta");
     var defensa= document.getElementById("estDef");
+    var vida=document.querySelector(".vidEne");
     imagen.src = "sprites/Atacante/ataca.gif";
     ataque.src="sprites/ataque/agua.gif";
     defensa.src="sprites/Enemigo/golpeado.gif";
-    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif";},900 );
+    setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif";},900 ); 
+    var dan= calDan(0,Math.floor(Math.random() * 3))
+    var nueVid=(vida.offsetWidth-dan ).toString()+"px"; 
+    menGol(dan);
+    vida.style.width=nueVid;
     setTimeout(function(){ataque.src="";defensa.src="sprites/Enemigo/espera.gif";},3000 );
   }
 
@@ -84,7 +90,7 @@ function ataFue() {
           }, 1000);
         
     }
-function reiniciarEstilos(imagen, hojaEstilos) {    ;
+function reiniciarEstilos(imagen, hojaEstilos) {    
   imagen.style.position = "";
   imagen.style.top = "";
   imagen.style.left = "";
@@ -94,4 +100,31 @@ function reiniciarEstilos(imagen, hojaEstilos) {    ;
 
   // Eliminar el estilo keyframes
   hojaEstilos.parentNode.removeChild(hojaEstilos);
+}
+//Calcula el daño de los ataques
+function calDan(ata,def){   
+  const combinaciones = {
+    "0-0": 20, // agua vs agua
+    "0-1": 40, // agua vs fuego
+    "0-2": 0, // agua vs rayo
+    "1-0": 0, // fuego vs agua
+    "1-1": 20, // fuego vs fuego
+    "1-2": 40, // fuego vs rayo
+    "2-0": 40, // rayo vs agua
+    "2-1": 0, // rayo vs fuego
+    "2-2": 20 // rayo vs rayo
+  };
+  cal=ata.toString()+"-"+def.toString();
+  return combinaciones[cal]
+}
+
+function menGol(dan){
+  var mensaje=document.querySelector(".mensaje");
+  if(dan==40){
+    mensaje.src="sprites/interfaz/mensaje/golpecritico.gif";
+  }else if(dan==20){
+    mensaje.src="sprites/interfaz/mensaje/golpeacertado.gif";
+  }else if(dan==0){
+    mensaje.src="sprites/interfaz/mensaje/fallocritico.gif" ;
+  }
 }
