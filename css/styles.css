@@ -116,3 +116,11 @@ body {
     top:  0%; 
     left: 99%;    
 }
+
+/*Posicion elementos oponente*/
+
+.container img.fueEne{    
+    position: absolute;    
+    top:  70%; 
+    left: 7%;
+}

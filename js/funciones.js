@@ -24,10 +24,12 @@ function btnTruArr(elemento) {
 //Sección de cambio de imagen de Ataque en enemigo
 
 function ataAgu() {
+    bloBot();
     var imagen = document.getElementById("estAta");
     var ataque= document.getElementById("efeAguAta");
     var defensa= document.getElementById("estDef");
     var vida=document.querySelector(".vidEne");
+    var mensaje=document.querySelector(".mensaje");
     imagen.src = "sprites/Atacante/ataca.gif";
     ataque.src="sprites/ataque/agua.gif";
     defensa.src="sprites/Enemigo/golpeado.gif";
@@ -36,24 +38,36 @@ function ataAgu() {
     var nueVid=(vida.offsetWidth-dan ).toString()+"px"; 
     menGol(dan);
     vida.style.width=nueVid;
-    setTimeout(function(){ataque.src="";defensa.src="sprites/Enemigo/espera.gif";},3000 );
+    setTimeout(function(){ataque.src="";
+    defensa.src="sprites/Enemigo/espera.gif";
+    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";},3000 );
   }
 
 function ataTru() {
     var imagen = document.getElementById("estAta");
     var ataque= document.getElementById("efeTruAta");
     var defensa= document.getElementById("estDef");
+    var vida=document.querySelector(".vidEne");
+    var mensaje=document.querySelector(".mensaje");
     imagen.src = "sprites/Atacante/ataca.gif";
     ataque.src="sprites/ataque/trueno.gif";
     defensa.src="sprites/Enemigo/golpeado.gif";
     setTimeout(function(){imagen.src = "sprites/Atacante/espera.gif";},900 );
-    setTimeout(function(){ataque.src="";defensa.src="sprites/Enemigo/espera.gif";},3000 );
+    var dan= calDan(1,Math.floor(Math.random() * 3))
+    var nueVid=(vida.offsetWidth-dan ).toString()+"px"; 
+    menGol(dan);
+    vida.style.width=nueVid;
+    setTimeout(function(){ataque.src="";
+    defensa.src="sprites/Enemigo/espera.gif";
+    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";},3000 );
   }
   
 function ataFue() {
         var imagen = document.getElementById("efeFueAta");
         var ataque= document.getElementById("estAta");        
         var defensa= document.getElementById("estDef");
+        var vida=document.querySelector(".vidEne");
+        var mensaje=document.querySelector(".mensaje");
         ataque.src = "sprites/Atacante/ataca.gif";
         imagen.src="sprites/ataque/fuego-derecha.gif";
         imagen.style.position = "absolute";
@@ -79,13 +93,19 @@ function ataFue() {
         var hojaEstilos = document.createElement("style");
         hojaEstilos.innerHTML = estiloKeyframes;
         document.head.appendChild(hojaEstilos);
+        
         setTimeout(function() {
             imagen.src="";
             ataque.src ="sprites/Atacante/espera.gif";
             defensa.src="sprites/Enemigo/golpeado.gif";
+            var dan= calDan(1,Math.floor(Math.random() * 3))
+            var nueVid=(vida.offsetWidth-dan ).toString()+"px";         
+            vida.style.width=nueVid;
+            menGol(dan);
             setTimeout(function(){
                 defensa.src="sprites/Enemigo/espera.gif";
-                reiniciarEstilos(imagen, hojaEstilos); 
+                reiniciarEstilos(imagen, hojaEstilos);
+                mensaje.src="sprites/interfaz/mensaje/defiendete.gif"; 
             },2000);                       
           }, 1000);
         
@@ -117,7 +137,7 @@ function calDan(ata,def){
   cal=ata.toString()+"-"+def.toString();
   return combinaciones[cal]
 }
-
+//envía mensaje dependiendo de la cantidad de ataque hecho
 function menGol(dan){
   var mensaje=document.querySelector(".mensaje");
   if(dan==40){
@@ -128,3 +148,16 @@ function menGol(dan){
     mensaje.src="sprites/interfaz/mensaje/fallocritico.gif" ;
   }
 }
+
+//bloquea los botones 
+
+function bloBot(){
+  var btnAgu=document.querySelector('.btnAgu');
+  var btnFue=document.querySelector('.btnFue');
+  var btnTru=document.querySelector('.btnTru');
+  btnAgu.onclick="";
+  btnFue.onclick="";
+  btnTru.onclick="";
+}
+
+//asigna los botones a defensa
