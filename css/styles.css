@@ -16,6 +16,14 @@ body {
     max-width: 100%;
     max-height: 100%;
 }
+
+.container img.vs{
+    position: absolute;     
+    width: 50px;
+    height: auto;   
+    top:  0%; 
+    left: 45%;
+}
 /*Posicion espacial de los pnj*/
 .container img.pnjEne{
     position: absolute;    
@@ -72,17 +80,39 @@ body {
     top:  0%; 
     left: 55%;
 }
-
-.container img.vidAta{
-    position: absolute;   
-    top:  0%; 
-    left: 0%;
-    /*margin-left: -50px;*/
-}
+/* barra de vida*/
 
 .container img.vidEne{
     transform: scaleX(-1);
     position: absolute;    
     top:  0%; 
     left: 55%;
+}
+
+/*Mensajes*/
+.container img.mensaje{
+    position:  absolute;
+    top:20%;
+    left: 0%;
+}
+
+/*reduccion*/
+.container div.vidAta{
+    overflow: hidden;
+    width: 200px;
+    height: auto;
+    position: absolute;    
+    top:  0%; 
+    left: 0.5%;     
+}
+
+.container div.vidEne{    
+    transform: scaleX(-1);
+    transform-origin: left;
+    overflow: hidden;
+    width: 200px;    
+    height:auto;    
+    position: absolute;    
+    top:  0%; 
+    left: 99%;    
 }
