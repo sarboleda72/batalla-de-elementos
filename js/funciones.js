@@ -1,6 +1,6 @@
 //Sección de cambio de imagen del boton
 function btnAguAba(elemento) {
-    elemento.src = "sprites/interfaz/botones/agua/abajo.png"
+    elemento.src = "sprites/interfaz/botones/agua/abajo.png"    
   }
 function btnAguArr(elemento) {
     elemento.src = "sprites/interfaz/botones/agua/arriba.png"
@@ -243,4 +243,11 @@ function finJuego(){
     snd.play();
     return true
   }
+}
+
+//reproducir audio ambientacion
+function ambientacion() {
+  var amb=document.querySelector('.sonido');
+  amb.src="sonidos/ambientacion.mp3";
+  amb.play();
 }
