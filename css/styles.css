@@ -136,3 +136,7 @@ body {
     top:  70%; 
     left: 7%;
 }
+
+.sonido audio.sonido{
+    background-color: blueviolet;
+}
