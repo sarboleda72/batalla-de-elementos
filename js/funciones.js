@@ -40,7 +40,8 @@ function ataAgu() {
     vida.style.width=nueVid;
     setTimeout(function(){ataque.src="";
     defensa.src="sprites/Enemigo/espera.gif";
-    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";},3000 );
+    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";
+    asiDef();},3000 );
   }
 
 function ataTru() {
@@ -59,7 +60,8 @@ function ataTru() {
     vida.style.width=nueVid;
     setTimeout(function(){ataque.src="";
     defensa.src="sprites/Enemigo/espera.gif";
-    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";},3000 );
+    mensaje.src="sprites/interfaz/mensaje/defiendete.gif";
+    asiDef();},3000 );
   }
   
 function ataFue() {
@@ -105,7 +107,8 @@ function ataFue() {
             setTimeout(function(){
                 defensa.src="sprites/Enemigo/espera.gif";
                 reiniciarEstilos(imagen, hojaEstilos);
-                mensaje.src="sprites/interfaz/mensaje/defiendete.gif"; 
+                mensaje.src="sprites/interfaz/mensaje/defiendete.gif";
+                asiDef(); 
             },2000);                       
           }, 1000);
         
@@ -161,3 +164,52 @@ function bloBot(){
 }
 
 //asigna los botones a defensa
+function asiDef(){
+  var btnAgu=document.querySelector('.btnAgu');
+  var btnFue=document.querySelector('.btnFue');
+  var btnTru=document.querySelector('.btnTru');
+  btnAgu.setAttribute("onclick", "escAta(0)");
+  btnFue.setAttribute("onclick", "escAta(1)");
+  btnTru.setAttribute("onclick", "escAta(2)");
+}
+//asigna los botones ataque
+function asiAta(){
+  var btnAgu=document.querySelector('.btnAgu');
+  var btnFue=document.querySelector('.btnFue');
+  var btnTru=document.querySelector('.btnTru');
+  btnAgu.setAttribute("onclick", "ataAgu()");
+  btnFue.setAttribute("onclick", "ataFue()");
+  btnTru.setAttribute("onclick", "ataTru()");
+}
+//ataque oponente
+function escAta(dan){
+  var ata=Math.floor(Math.random() * 3)
+  if (ata==0){
+    opoAta(dan,"sprites/ataque/agua2.gif",0,'.aguEne');
+  }else if(ata==1){
+    opoAta(dan,"sprites/ataque/fuego2.gif",1,'.fueEne');
+  }else if(ata==2){
+    opoAta(dan,"sprites/ataque/trueno2.gif",2,'.truEne');
+  }
+}
+
+function opoAta(dan,tipAta,valAta,tipBot) {
+  bloBot();
+  var imagen = document.querySelector('.pnjEne');
+  var ataque= document.querySelector(tipBot);
+  var defensa= document.querySelector('.pnjAta');
+  var vida=document.querySelector(".vidAta");
+  var mensaje=document.querySelector(".mensaje");
+  imagen.src = "sprites/Enemigo/ataca.gif";
+  ataque.src=tipAta;
+  defensa.src="sprites/Atacante/golpeado.gif";
+  setTimeout(function(){imagen.src = "sprites/Enemigo/espera.gif";},900 ); 
+  dan= calDan(valAta,dan);
+  var nueVid=(vida.offsetWidth-dan ).toString()+"px"; 
+  menGol(dan);
+  vida.style.width=nueVid;
+  setTimeout(function(){ataque.src="";
+  defensa.src="sprites/Atacante/espera.gif";
+  mensaje.src="sprites/interfaz/mensaje/ataca.gif";
+  asiAta()},3000 );
+}

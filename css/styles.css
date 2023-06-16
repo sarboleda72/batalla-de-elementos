@@ -124,3 +124,15 @@ body {
     top:  70%; 
     left: 7%;
 }
+
+.container img.truEne{    
+    position: absolute;    
+    top:  70%; 
+    left: 0%;
+}
+
+.container img.aguEne{    
+    position: absolute;    
+    top:  70%; 
+    left: 7%;
+}
