@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <div class="container">
         <img src="sprites/escenario/Escenario.gif" class="escPri">
         <img src="sprites/escenario/vs.png" class="vs">
-        <img src="sprites/interfaz/mensaje/ataca.gif" class="mensaje">        
+        <img src="" class="mensaje">        
         <img src="sprites/Atacante/espera.gif" class="pnjAta" id="estAta">     
         <img src="sprites/Enemigo/espera.gif" class="pnjEne" id="estDef">
         <img src="sprites/interfaz/botones/agua/arriba.png" onmousedown="btnAguAba(this)" onmouseup="btnAguArr(this)" onclick="ataAgu()" class="btnAgu">
@@ -30,8 +30,13 @@
         </div>  
         <div class="vidEne">
             <img src="sprites/interfaz/vida/hp.png">   
-        </div>         
+        </div>
+        <div class="menPri">
+            <img src="sprites/interfaz/menu/menu.jpg" class="menuPri">
+            <h1 class="creado">Creado por: Santiago Arboleda Agudelo</h1>
+            <img src="sprites/interfaz/menu/Start Button.png" onmousedown="this.src='sprites/interfaz/menu/Start  col_Button.png'" onmouseup="inicio()" class="btnIni">
+        </div>
     </div>        
-    <audio src="sonidos/ambientacion.mp3" autoplay class="sonido"></audio>
+    <audio src="" autoplay class="sonido"></audio>
 </body>
 </html>

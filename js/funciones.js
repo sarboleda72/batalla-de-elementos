@@ -251,3 +251,19 @@ function ambientacion() {
   amb.src="sonidos/ambientacion.mp3";
   amb.play();
 }
+
+//funcion menu principal
+
+function inicio(){
+  var menPri=document.querySelector('.menuPri');
+  var mensaje=document.querySelector('.mensaje');
+  var creado=document.querySelector('.creado');
+  var btnIni=document.querySelector('.btnIni');
+  var divPri=document.querySelector('.menPri');
+  divPri.style.display="none";
+  menPri.style.visibility= "hidden";
+  creado.style.visibility= "hidden";
+  btnIni.style.visibility= "hidden";
+  mensaje.src="sprites/interfaz/mensaje/ataca.gif";  
+  ambientacion();
+}
