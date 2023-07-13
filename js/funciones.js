@@ -227,13 +227,13 @@ function finJuego(){
   var imgAta=document.querySelector('.pnjAta');
   var imgEne=document.querySelector('.pnjEne');
   var enemigo=document.querySelector(".vidEne");
-  var snd=document.querySelector(".sonido");
-  var mensaje=document.querySelector(".mensaje");
+  var snd=document.querySelector(".sonido");  
   if(atacante.offsetWidth<1){
     bloBot();
     imgAta.src="sprites/Atacante/muere.gif";
     snd.src="sonidos/muerte.mp3";
     snd.play();
+    recarga();
     return true 
   }
   if(enemigo.offsetWidth<1){
@@ -241,8 +241,22 @@ function finJuego(){
     imgEne.src="sprites/Enemigo/muere.gif";    
     snd.src="sonidos/ganador.mp3";
     snd.play();
+    recarga();
     return true
   }
+}
+
+function recarga(){  
+  var divPri=document.querySelector('.menPri');
+  var btnIni=document.querySelector(".btnIni");
+  divPri.style.display="block";
+  btnIni.style.width="50px";
+  btnIni.style.left="45%";
+  btnIni.style.visibility="visible";
+  btnIni.src="sprites/interfaz/menu/recarga.gif";
+  btnIni.setAttribute("onmousedown", "");
+  btnIni.setAttribute("onmouseup", "location.reload()");
+  
 }
 
 //reproducir audio ambientacion
