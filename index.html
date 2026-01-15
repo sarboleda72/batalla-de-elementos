@@ -3,40 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batalla de elementos</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/funciones.js" class="js"></script>
+    <meta name="description" content="Juego de batalla de elementos tipo Pokémon con mecánica piedra-papel-tijera">
+    <meta name="author" content="Santiago Arboleda Agudelo">
+    <meta name="keywords" content="juego, batalla, elementos, agua, fuego, trueno">
+    <title>Batalla de Elementos | Juego de Estrategia</title>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <img src="sprites/escenario/Escenario.gif" class="escPri">
-        <img src="sprites/escenario/vs.png" class="vs">
-        <img src="" class="mensaje">        
-        <img src="sprites/Atacante/espera.gif" class="pnjAta" id="estAta">     
-        <img src="sprites/Enemigo/espera.gif" class="pnjEne" id="estDef">
-        <img src="sprites/interfaz/botones/agua/arriba.png" onmousedown="btnAguAba(this)" onmouseup="btnAguArr(this)" onclick="ataAgu()" class="btnAgu">
-        <img src="sprites/interfaz/botones/fuego/arriba.png" onmousedown="btnFueAba(this)" onmouseup="btnFueArr(this)" onclick="ataFue()" class="btnFue">
-        <img src="sprites/interfaz/botones/trueno/arriba.png" onmousedown="btnTruAba(this)" onmouseup="btnTruArr(this)" onclick="ataTru()" class="btnTru">
-        <img src="" class="aguAta" id="efeAguAta">
-        <img src="" class="truAta" id="efeTruAta">
-        <img src="" id="efeFueAta">
-        <img src="" class="fueEne">
-        <img src="" class="truEne">
-        <img src="" class="aguEne">
-        <img src="sprites/interfaz/vida/contenedor.png" class="conVidAta">
-        <img src="sprites/interfaz/vida/contenedor.png" class="conVidEne">
-        <div class="vidAta">
-            <img src="sprites/interfaz/vida/hp.png" >
-        </div>  
-        <div class="vidEne">
-            <img src="sprites/interfaz/vida/hp.png">   
-        </div>
-        <div class="menPri">
-            <img src="sprites/interfaz/menu/menu.jpg" class="menuPri">
+    <main class="container" role="main" aria-label="Arena de batalla">
+        <!-- Escenario -->
+        <img src="src/assets/sprites/escenario/Escenario.gif" class="escPri" alt="Escenario de batalla" loading="lazy">
+        <img src="src/assets/sprites/escenario/vs.png" class="vs" alt="Versus" loading="lazy">
+        
+        <!-- Mensajes de juego -->
+        <img src="" class="mensaje" alt="" role="status" aria-live="polite">
+        
+        <!-- Personajes -->
+        <img src="src/assets/sprites/Atacante/espera.gif" class="pnjAta" id="estAta" alt="Personaje atacante" loading="lazy">
+        <img src="src/assets/sprites/Enemigo/espera.gif" class="pnjEne" id="estDef" alt="Personaje enemigo" loading="lazy">
+        
+        <!-- Controles de ataque -->
+        <nav class="attack-controls" aria-label="Controles de ataque">
+            <img src="src/assets/sprites/interfaz/botones/agua/arriba.png" 
+                 onmousedown="btnAguAba(this)" 
+                 onmouseup="btnAguArr(this)" 
+                 onclick="ataAgu()" 
+                 class="btnAgu" 
+                 alt="Botón de ataque de agua (Tecla 1)"
+                 title="Ataque de agua - Presiona 1"
+                 tabindex="0"
+                 role="button"
+                 loading="lazy">
+            
+            <img src="src/assets/sprites/interfaz/botones/fuego/arriba.png" 
+                 onmousedown="btnFueAba(this)" 
+                 onmouseup="btnFueArr(this)" 
+                 onclick="ataFue()" 
+                 class="btnFue" 
+                 alt="Botón de ataque de fuego (Tecla 2)"
+                 title="Ataque de fuego - Presiona 2"
+                 tabindex="0"
+                 role="button"
+                 loading="lazy">
+            
+            <img src="src/assets/sprites/interfaz/botones/trueno/arriba.png" 
+                 onmousedown="btnTruAba(this)" 
+                 onmouseup="btnTruArr(this)" 
+                 onclick="ataTru()" 
+                 class="btnTru" 
+                 alt="Botón de ataque de trueno (Tecla 3)"
+                 title="Ataque de trueno - Presiona 3"
+                 tabindex="0"
+                 role="button"
+                 loading="lazy">
+        </nav>
+        
+        <!-- Efectos de ataque del jugador -->
+        <img src="" class="aguAta" id="efeAguAta" alt="" aria-hidden="true">
+        <img src="" class="truAta" id="efeTruAta" alt="" aria-hidden="true">
+        <img src="" id="efeFueAta" alt="" aria-hidden="true">
+        
+        <!-- Efectos de ataque del enemigo -->
+        <img src="" class="fueEne" alt="" aria-hidden="true">
+        <img src="" class="truEne" alt="" aria-hidden="true">
+        <img src="" class="aguEne" alt="" aria-hidden="true">
+        
+        <!-- Sistema de vida -->
+        <section class="health-system" aria-label="Sistema de puntos de vida">
+            <img src="src/assets/sprites/interfaz/vida/contenedor.png" class="conVidAta" alt="Contenedor de vida del atacante" loading="lazy">
+            <img src="src/assets/sprites/interfaz/vida/contenedor.png" class="conVidEne" alt="Contenedor de vida del enemigo" loading="lazy">
+            
+            <div class="vidAta" role="progressbar" aria-label="Vida del atacante" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <img src="src/assets/sprites/interfaz/vida/hp.png" alt="Barra de vida del atacante" loading="lazy">
+            </div>
+            
+            <div class="vidEne" role="progressbar" aria-label="Vida del enemigo" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                <img src="src/assets/sprites/interfaz/vida/hp.png" alt="Barra de vida del enemigo" loading="lazy">
+            </div>
+        </section>
+        
+        <!-- Menú principal -->
+        <aside class="menPri" aria-label="Menú principal">
+            <img src="src/assets/sprites/interfaz/menu/menu.jpg" class="menuPri" alt="Fondo del menú principal" loading="lazy">
             <h1 class="creado">Creado por: Santiago Arboleda Agudelo</h1>
-            <img src="sprites/interfaz/menu/Start Button.png" onmousedown="this.src='sprites/interfaz/menu/Start  col_Button.png'" onmouseup="inicio()" class="btnIni">
-        </div>
-    </div>        
-    <audio src="" autoplay class="sonido"></audio>
+            <img src="src/assets/sprites/interfaz/menu/Start Button.png" 
+                 onmousedown="this.src='src/assets/sprites/interfaz/menu/Start  col_Button.png'" 
+                 onmouseup="inicio()" 
+                 class="btnIni" 
+                 alt="Botón de inicio"
+                 title="Iniciar juego"
+                 tabindex="0"
+                 role="button"
+                 loading="lazy">
+        </aside>
+    </main>
+    
+    <!-- Audio -->
+    <audio src="" autoplay class="sonido" aria-label="Música de fondo"></audio>
+    
+    <!-- Scripts -->
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,449 @@
+/* ===== RESET Y VARIABLES ===== */
+:root {
+  --primary-color: #FFD700;
+  --secondary-color: #FF4500;
+  --background-dark: #0a0a0a;
+  --game-width: 480px;
+  --game-height: 272px;
+  --transition-speed: 0.3s;
+  --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 500px;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: var(--game-width);
+  height: var(--game-height);
+  border: 3px solid var(--primary-color);
+  border-radius: 10px;
+  background-color: #000;
+  box-shadow: var(--shadow-glow), 0 10px 50px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  transition: transform var(--transition-speed);
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+.container img.escPri {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+/* ===== ELEMENTOS DE INTERFAZ ===== */
+.container img.vs {
+  position: absolute;
+  width: 50px;
+  height: auto;
+  top: 0%;
+  left: 45%;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===== PERSONAJES ===== */
+.container img.pnjEne {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.container img.pnjAta {
+  position: absolute;
+  top: 65%;
+  left: 7%;
+  filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.container img.pnjEne:hover,
+.container img.pnjAta:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== BOTONES DE ATAQUE ===== */
+.btn-container {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  display: flex;
+  gap: 10px;
+}
+
+.container img.btnAgu,
+.container img.btnFue,
+.container img.btnTru {
+  width: 25px;
+  position: absolute;
+  top: 90%;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.container img.btnAgu {
+  left: 5%;
+}
+
+.container img.btnFue {
+  left: 11%;
+}
+
+.container img.btnTru {
+  width: 23px;
+  left: 17%;
+}
+
+.container img.btnAgu:hover,
+.container img.btnFue:hover,
+.container img.btnTru:hover {
+  transform: translateY(-3px) scale(1.15);
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+}
+
+.container img.btnAgu:active,
+.container img.btnFue:active,
+.container img.btnTru:active {
+  transform: translateY(0) scale(1);
+}
+
+/* ===== EFECTOS DE ATAQUE ===== */
+.container img.aguAta,
+.container img.truAta {
+  position: absolute;
+  top: 53%;
+  left: 70%;
+  filter: drop-shadow(0 0 15px rgba(100, 200, 255, 0.8));
+  animation: attackEffect 0.5s ease-out;
+}
+
+@keyframes attackEffect {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== BARRAS DE VIDA ===== */
+.container img.conVidAta,
+.container img.conVidEne {
+  position: absolute;
+  top: 5%;
+  z-index: 9;
+  width: 150px;
+}
+
+.container img.conVidAta {
+  left: 3%;
+}
+
+.container img.conVidEne {
+  transform: scaleX(-1);
+  right: 3%;
+}
+
+.container div.vidAta,
+.container div.vidEne {
+  overflow: hidden;
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 5.5%;
+  transition: width 0.5s ease-out;
+  z-index: 10;
+}
+
+.container div.vidAta {
+  left: 3.5%;
+}
+
+.container div.vidAta img {
+  filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.8));
+  width: 150px;
+  height: auto;
+}
+
+.container div.vidEne {
+  transform: scaleX(-1);
+  right: 4%;
+}
+
+.container div.vidEne img {
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+  width: 150px;
+  height: auto;
+}
+
+/* Efecto de vida baja */
+.container div.vidAta[style*="width: 0px"],
+.container div.vidAta[style*="width: 1px"],
+.container div.vidAta[style*="width: 2px"] {
+  animation: lowHealth 0.5s ease-in-out infinite;
+}
+
+.container div.vidEne[style*="width: 0px"],
+.container div.vidEne[style*="width: 1px"],
+.container div.vidEne[style*="width: 2px"] {
+  animation: lowHealth 0.5s ease-in-out infinite;
+}
+
+@keyframes lowHealth {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+
+/* ===== MENSAJES ===== */
+.container img.mensaje {
+  position: absolute;
+  top: 30%;
+  left: 0%;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  animation: messageAppear 0.5s ease-out;
+}
+
+@keyframes messageAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== EFECTOS DE ATAQUE ENEMIGO ===== */
+.container img.fueEne,
+.container img.truEne,
+.container img.aguEne {
+  position: absolute;
+  top: 70%;
+  filter: drop-shadow(0 0 15px rgba(255, 100, 100, 0.8));
+  animation: attackEffect 0.5s ease-out;
+}
+
+.container img.fueEne {
+  left: 7%;
+}
+
+.container img.truEne {
+  left: 0%;
+}
+
+.container img.aguEne {
+  left: 7%;
+}
+
+/* ===== MENÚ PRINCIPAL ===== */
+.container .menPri {
+  overflow: hidden;
+  position: absolute;
+  width: 480px;
+  height: 272px;
+  top: 0%;
+  left: 0%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container img.menuPri {
+  width: 480px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.container h1.creado {
+  font-family: 'Arial', sans-serif;
+  position: absolute;
+  top: 85%;
+  left: 1%;
+  font-size: 16px;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 101;
+}
+
+.container img.btnIni {
+  position: absolute;
+  width: 100px;
+  top: 40%;
+  left: 38%;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  filter: drop-shadow(0 0 10px var(--primary-color));
+  z-index: 101;
+  animation: btnPulse 2s ease-in-out infinite;
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px var(--primary-color));
+  }
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px var(--primary-color));
+  }
+}
+
+.container img.btnIni:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 25px var(--primary-color));
+}
+
+/* ===== RESULTADO DEL JUEGO ===== */
+.game-result {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px 40px;
+  border: 3px solid var(--primary-color);
+  border-radius: 15px;
+  text-align: center;
+  z-index: 99;
+  box-shadow: 0 0 30px var(--primary-color);
+  animation: resultAppear 0.5s ease-out;
+}
+
+@keyframes resultAppear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.game-result h2 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px var(--primary-color);
+  font-weight: bold;
+}
+
+.game-result p {
+  font-size: 18px;
+  color: #fff;
+  margin: 8px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+  body {
+    min-width: 100%;
+    padding: 10px;
+  }
+
+  .container {
+    width: 90vw;
+    height: calc(90vw * 0.5667);
+    max-width: var(--game-width);
+    max-height: var(--game-height);
+  }
+
+  .container h1.creado {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    border-width: 2px;
+  }
+
+  .container img.btnAgu,
+  .container img.btnFue,
+  .container img.btnTru {
+    width: 20px;
+  }
+
+  .game-result h2 {
+    font-size: 24px;
+  }
+
+  .game-result p {
+    font-size: 14px;
+  }
+}
+
+/* ===== ANIMACIÓN DE APARICIÓN DEL FUEGO ===== */
+@keyframes aparecer-desplazar {
+  0% {
+    opacity: 1;
+    left: 17%;
+  }
+  100% {
+    opacity: 1;
+    left: 70%;
+  }
+}
+
+/* ===== EFECTOS ADICIONALES ===== */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
